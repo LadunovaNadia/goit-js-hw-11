@@ -1,4 +1,6 @@
 import Notiflix from 'notiflix';
+import axios from 'axios';
+
 const searchForm = document.getElementById("search-form");
 const gallery = document.querySelector(".gallery");
 const loadMoreButton = document.querySelector(".load-more");
@@ -16,10 +18,10 @@ searchForm.addEventListener("submit", async (e) => {
       return;
    }
    try {
-      const response = await fetch(
+      const response = await axios.get(
             `https://pixabay.com/api/?key=${apiKey}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=40`
       );
-      const data = await response.json();
+      const data = response.data;
 
       if (data.hits.length === 0) {
             Notiflix.Notify.info('Sorry, there are no images matching your search query. Please try again.'); 

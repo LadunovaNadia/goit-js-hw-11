@@ -5,7 +5,6 @@ const loadMoreButton = document.querySelector(".load-more");
 let page = 1;
 
 const apiKey = "39897320-b68065050135ed430301d40a9";
-
 searchForm.addEventListener("submit", async (e) => {
    e.preventDefault();
    const searchQuery = e.target.searchQuery.value;
@@ -16,7 +15,6 @@ searchForm.addEventListener("submit", async (e) => {
       Notiflix.Notify.failure('Please enter a search query.');
       return;
    }
-
    try {
       const response = await fetch(
             `https://pixabay.com/api/?key=${apiKey}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=40`
@@ -29,7 +27,6 @@ searchForm.addEventListener("submit", async (e) => {
             data.hits.forEach((image) => {
                const photoCard = document.createElement("div");
                photoCard.classList.add("photo-card");
-
                photoCard.innerHTML = `
                   <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
                   <div class="info">
@@ -39,7 +36,6 @@ searchForm.addEventListener("submit", async (e) => {
                      <p class="info-item"><b>Downloads:</b> ${image.downloads}</p>
                   </div>
                `;
-
                gallery.appendChild(photoCard);
             });
 

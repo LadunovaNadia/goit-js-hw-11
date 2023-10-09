@@ -27,8 +27,8 @@ button {
 .gallery {
 	display: flex;
 	flex-wrap: wrap;
+		justify-content: center;
 	gap: 20px;
-	justify-content: center;
 }
 
 .photo-card {
@@ -54,3 +54,7 @@ h1 {
 	color: #434455;
 }
 
+.gallery-container {
+	display: flex;
+	justify-content: center;
+}
